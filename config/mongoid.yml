@@ -1,0 +1,29 @@
+production:
+  clients:
+    default:
+      uri: "<%= ENV['MONGODB_URI'] %>"
+      options:
+        heartbeat_frequency: 10
+        write:
+          w: 1
+        read:
+          mode: :primary
+development:
+  clients:
+    default:
+      uri: "<%= ENV['MONGODB_URI'] %>_<%= Rails.env.to_s %>"
+      options:
+        heartbeat_frequency: 10
+        write:
+          w: 1
+        read:
+          mode: :primary
+
+test:
+  clients:
+    default:
+      uri: "<%= ENV['MONGODB_URI'] %>"
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
