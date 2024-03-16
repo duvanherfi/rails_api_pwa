@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[ show update destroy ]
+  before_action :validate_session_token
 
   # GET /clients
   def index
