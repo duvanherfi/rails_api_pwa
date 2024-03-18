@@ -6,4 +6,8 @@ class Person
   field :password, type: String
   field :phone, type: String
   field :identification, type: String
+
+  #validar que no exista registros con el mismo email e identificación
+  validates :email, uniqueness: true
+  validates :identification, uniqueness: true
 end
