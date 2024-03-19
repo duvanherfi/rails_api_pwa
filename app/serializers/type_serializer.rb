@@ -1,4 +1,4 @@
-class UserSerializer < ActiveModel::Serializer
+class TypeSerializer < ActiveModel::Serializer
   attributes :_id, :name
   belongs_to :type
 
