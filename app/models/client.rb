@@ -3,3 +3,4 @@ class Client < Person
   include Mongoid::Timestamps
   belongs_to :type, optional: true
 end
+
