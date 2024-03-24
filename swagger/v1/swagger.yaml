@@ -1,0 +1,825 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/projects/{project_id}/tasks/{task_id}/audios/{id}/file":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: file audio
+      responses:
+        '200':
+          description: successful
+  "/projects/{project_id}/tasks/{task_id}/audios":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list audios
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create audio
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - file
+  "/projects/{project_id}/tasks/{task_id}/audios/{id}":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show audio
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update audio
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - file
+    put:
+      summary: update audio
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - file
+    delete:
+      summary: delete audio
+      responses:
+        '200':
+          description: successful
+  "/clients":
+    get:
+      summary: list clients
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create client
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                type_id:
+                  type: string
+              required:
+              - name
+              - email
+              - phone
+              - active
+              - identification
+              - type_id
+  "/clients/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show client
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update client
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                type_id:
+                  type: string
+              required:
+              - name
+              - email
+              - phone
+              - active
+              - identification
+              - type_id
+    put:
+      summary: update client
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                type_id:
+                  type: string
+              required:
+              - name
+              - email
+              - phone
+              - active
+              - identification
+              - type_id
+    delete:
+      summary: delete client
+      responses:
+        '200':
+          description: successful
+  "/projects/{project_id}/tasks/{task_id}/images/{id}/file":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: file image
+      responses:
+        '200':
+          description: successful
+  "/projects/{project_id}/tasks/{task_id}/images":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list images
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create image
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - name
+  "/projects/{project_id}/tasks/{task_id}/images/{id}":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: task_id
+      in: path
+      description: task_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show image
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update image
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - name
+    put:
+      summary: update image
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+              required:
+              - name
+    delete:
+      summary: delete image
+      responses:
+        '200':
+          description: successful
+  "/positions":
+    get:
+      summary: list positions
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create position
+      responses:
+        '200':
+          description: successful
+  "/positions/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show position
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update position
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update position
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete position
+      responses:
+        '200':
+          description: successful
+  "/projects":
+    get:
+      summary: list projects
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create project
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/projects/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show project
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update project
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    put:
+      summary: update project
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    delete:
+      summary: delete project
+      responses:
+        '200':
+          description: successful
+  "/projects/{project_id}/tasks":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list tasks
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create task
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                completed:
+                  type: string
+                add_task_dialog:
+                  type: boolean
+              required:
+              - name
+              - description
+              - completed
+              - add_task_dialog
+  "/projects/{project_id}/tasks/{id}":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show task
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update task
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                completed:
+                  type: string
+                add_task_dialog:
+                  type: boolean
+              required:
+              - name
+              - description
+              - completed
+              - add_task_dialog
+    put:
+      summary: update task
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                completed:
+                  type: string
+                add_task_dialog:
+                  type: boolean
+              required:
+              - name
+              - description
+              - completed
+              - add_task_dialog
+    delete:
+      summary: delete task
+      responses:
+        '200':
+          description: successful
+  "/types":
+    get:
+      summary: list types
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create type
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/types/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show type
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update type
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    put:
+      summary: update type
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    delete:
+      summary: delete type
+      responses:
+        '200':
+          description: successful
+  "/users":
+    get:
+      summary: list users
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create user
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                position_id:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+              - phone
+              - active
+              - identification
+              - position_id
+  "/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                position_id:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+              - phone
+              - active
+              - identification
+              - position_id
+    put:
+      summary: update user
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                active:
+                  type: boolean
+                identification:
+                  type: string
+                position_id:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+              - phone
+              - active
+              - identification
+              - position_id
+    delete:
+      summary: delete user
+      responses:
+        '200':
+          description: successful
+  "/login":
+    parameters:
+    - name: email
+      in: path
+      description: email
+      required: true
+      schema:
+        type: string
+    - name: password
+      in: path
+      description: email
+      required: true
+      schema:
+        type: string
+    post:
+      summary: login user
+      responses:
+        '200':
+          description: successful
+  "/logout":
+    parameters:
+    - name: t
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+    get:
+      summary: logout user
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

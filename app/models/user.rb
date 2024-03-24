@@ -1,7 +1,10 @@
 class User  < Person
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  field :password, type: String
   field :session_token, type: String
+  field :active, type: Mongoid::Boolean, default: true
   belongs_to :position, optional: true
 
   before_create :encrypted_password

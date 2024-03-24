@@ -29,11 +29,15 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 
+gem 'rswag'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem "dotenv-rails"
   gem "byebug"
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -43,3 +47,4 @@ end
 gem 'mongoid', '~> 8.1.0'
 
 gem 'active_model_serializers'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
