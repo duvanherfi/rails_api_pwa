@@ -1,6 +1,5 @@
 class TaskSerializer < ActiveModel::Serializer
   attributes :_id, :name, :description, :completed, :add_task_dialog
-  belongs_to :project
   has_many :images
   has_many :audios
 
