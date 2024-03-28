@@ -42,7 +42,7 @@ module ApiPwaBuilding
     config.api_only = true
 
 
-    config.mongoid.logger = Logger.new(STDERR, :warn)
+    config.mongoid.logger = Logger.new(STDERR, :error)
     config.middleware.use Mongoid::QueryCache::Middleware
   end
 end
