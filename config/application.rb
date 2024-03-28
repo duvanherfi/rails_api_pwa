@@ -40,9 +40,6 @@ module ApiPwaBuilding
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-
-
-    config.mongoid.logger = Logger.new(STDERR, :error)
     config.middleware.use Mongoid::QueryCache::Middleware
   end
 end
