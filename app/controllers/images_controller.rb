@@ -14,7 +14,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    byebug
     @image = @task.images.new(image_params)
 
     if @image.save
