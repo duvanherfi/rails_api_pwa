@@ -34,6 +34,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def report
+    labels = ["Completadas", "No completadas"]
+    values = [@project.tasks.where(completed: true).count, @project.tasks.where(completed: false).count]
+    render json: {labels: labels, values: values}
+  end
+
   # DELETE /tasks/1
   def destroy
     @task.destroy!

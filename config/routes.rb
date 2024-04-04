@@ -10,10 +10,15 @@ Rails.application.routes.draw do
       resources :audios do
         get :file, on: :member
       end
+      get :report, on: :collection
     end
   end
-  resources :types
-  resources :positions
+  resources :types  do
+    get :report, on: :collection
+  end
+  resources :positions do
+    get :report, on: :collection
+  end
   resources :users
   resources :clients
   post 'login', to: 'users#login'

@@ -8,6 +8,11 @@ RSpec.describe 'types', type: :request do
       consumes 'application/json'
       response(200, 'successful') do
 
+        before do |example|
+          Type.insert_many({name: "Natural"}, {name: "Juridica"})
+          submit_request(example.metadata)
+        end
+
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -15,7 +20,10 @@ RSpec.describe 'types', type: :request do
             }
           }
         end
-        run_test!
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data.count).to be > 0
+        end
       end
     end
 
@@ -30,6 +38,23 @@ RSpec.describe 'types', type: :request do
       }
       response(200, 'successful') do
         let(:type) {{name: "type 1"}}
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
+
+  path '/types/report' do
+
+    get('list report') do
+      response(200, 'successful') do
 
         after do |example|
           example.metadata[:response][:content] = {

@@ -38,6 +38,16 @@ class PositionsController < ApplicationController
     @position.destroy!
   end
 
+  def report
+    labels = []
+    values = []
+    Position.each do |position|
+      labels.push(position.name)
+      values.push(position.users.count)
+    end
+    render json: {labels: labels, values: values}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_position

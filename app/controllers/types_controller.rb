@@ -38,6 +38,16 @@ class TypesController < ApplicationController
     @type.destroy!
   end
 
+  def report
+    labels = []
+    values = []
+    Type.each do |type|
+      labels.push(type.name)
+      values.push(type.clients.count)
+    end
+    render json: {labels: labels, values: values}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_type

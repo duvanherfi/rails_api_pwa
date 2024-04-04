@@ -57,6 +57,23 @@ RSpec.describe 'tasks', type: :request do
     end
   end
 
+  path '/projects/{project_id}/tasks/report' do
+    parameter name: 'project_id', in: :path, type: :string, description: 'project_id'
+    get('list report') do
+      response(200, 'successful') do
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
+
   path '/projects/{project_id}/tasks/{id}' do
     # You'll want to customize the parameter types...
     parameter name: 'project_id', in: :path, type: :string, description: 'project_id'
