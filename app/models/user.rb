@@ -15,6 +15,7 @@ class User  < Person
 
   def self.authenticate(email:, password:)
     user = User.where(email: email).first
+    return [false, "Cuenta desactivada"] if user.active == false
 
     if user&.password == Digest::SHA256.new.hexdigest(password)
       user.generate_session_token
