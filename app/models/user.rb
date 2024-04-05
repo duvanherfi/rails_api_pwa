@@ -4,6 +4,7 @@ class User  < Person
 
   field :password, type: String
   field :session_token, type: String
+  field :expire_session_at, type: DateTime
   field :active, type: Mongoid::Boolean, default: true
   belongs_to :position, optional: true
 
@@ -15,14 +16,13 @@ class User  < Person
 
   def self.authenticate(email:, password:)
     user = User.where(email: email).first
-    return [false, "Cuenta desactivada"] if user.active == false
+    return [false, "Cuenta desactivada"] if user && !user.active
 
-    if user&.password == Digest::SHA256.new.hexdigest(password)
+    if user && user&.password == Digest::SHA256.new.hexdigest(password)
       user.generate_session_token
-      [true, user]
-    else
-      [false, "Email ó contraseña incorrecta"]
+      return [true, user]
     end
+    [false, "Email ó contraseña incorrecta"]
   end
 
   def generate_session_token
@@ -30,6 +30,7 @@ class User  < Person
       random_token = SecureRandom.urlsafe_base64(40)
       break random_token unless self.class.where(session_token: random_token).exists?
     end
+    self.expire_session_at = 1.hour.after
     self.save
   end
 

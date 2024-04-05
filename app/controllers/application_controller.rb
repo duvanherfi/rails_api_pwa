@@ -4,7 +4,10 @@ class ApplicationController < ActionController::API
 
   def validate_session_token
     return unless params[:t].blank? && request.headers['X-PI-TOKEN'].blank? ||
-      ((params[:t].present? || request.headers['X-PI-TOKEN'].present?) && current_user.blank?)
+      ((params[:t].present? || request.headers['X-PI-TOKEN'].present?) && current_user.blank?) ||
+      (current_user&.expire_session_at.blank? || current_user&.expire_session_at&.<(Time.now))
+
+    current_user&.logout
 
     render json: { mssg: "Debe inicias sessión nuevamente" }, status: :unauthorized
   end
@@ -25,7 +28,7 @@ class ApplicationController < ActionController::API
     end
 
     unless access
-      render json: { mssg: "Acceso no permitido" }, status: :unauthorized
+      render json: { mssg: "Acceso no permitido" }, status: :forbidden
     end
   end
 
