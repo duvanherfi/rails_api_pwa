@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :validate_session_token
-  before_action :can_acces?
+  before_action :can_access?
 
   def validate_session_token
     return unless params[:t].blank? && request.headers['X-PI-TOKEN'].blank? ||
@@ -9,10 +9,10 @@ class ApplicationController < ActionController::API
 
     current_user&.logout
 
-    render json: { mssg: "Debe inicias sessión nuevamente" }, status: :unauthorized
+    render json: "Debe inicias sesión nuevamente", status: :unauthorized
   end
 
-  def can_acces?
+  def can_access?
     position = current_user&.position&.name
     access = case self.class
     when UsersController
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::API
     end
 
     unless access
-      render json: { mssg: "Acceso no permitido" }, status: :forbidden
+      render json: "Acceso no permitido", status: :forbidden
     end
   end
 

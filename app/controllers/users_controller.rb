@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def logout
     current_user.logout
-    render json: {mssg: 'Sessión cerrada'}, status: :ok
+    render json: 'Sesión cerrada', status: :ok
   end
 
   # POST /users
