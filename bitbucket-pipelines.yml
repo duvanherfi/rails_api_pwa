@@ -1,0 +1,59 @@
+# This is a sample build configuration for Docker.
+# Check our guides at https://confluence.atlassian.com/x/O1toN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+#empty
+image:
+  name: atlassian/default-image:3
+definitions:
+  steps:
+    - step: &start
+        name: Start pipeline
+        clone:
+          enabled: false
+        runs-on: self.hosted
+        script:
+          - echo "Starting pipeline"
+    - step: &build
+        name: build
+        trigger: manual
+        runs-on: self.hosted
+        script:
+          - git archive --format=tar.gz $BITBUCKET_BRANCH -o deploy.tar.gz
+        artifacts:
+          - "deploy.tar.gz"
+    - step: &deploy-heroku
+        name: Deploy to heroku
+        trigger: manual
+        runs-on: self.hosted
+        script:
+          - pipe: atlassian/heroku-deploy:2.4.0
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ACTION: 'deploy' # Optional. 'update' or 'deploy' # Default 'deploy'.
+              ZIP_FILE: "deploy.tar.gz" # Optional. 'ACTION' 'deploy' specific.
+              # WAIT: '<boolean>' # Optional. 'ACTION' 'deploy' specific # Default: 'false'.
+              # CONFIG_VARS: '<json>' # Optional. 'ACTION' 'update' specific.
+              # DEBUG: '<boolean>' # Optional. # Default: 'false'.
+pipelines:
+
+  branches:
+    main:
+      - step: *start
+      - step: *build
+      - step:
+          <<: *deploy-heroku
+          trigger: manual
+          deployment: Production
+    release/*:
+      - step: *start
+      - step: *build
+      - step:
+          <<: *deploy-heroku
+          trigger: manual
+          deployment: Staging
+
+
+
