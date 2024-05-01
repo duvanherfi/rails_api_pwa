@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 1b226d574387a44318bc6bebae7670ebd05ea57e
+  revision: 325c04c1af9cb0ec53657a4cf00cf824a9dfe932
   branch: main
   specs:
     actioncable (7.2.0.alpha)
@@ -168,7 +168,7 @@ GEM
     mime-types-data (3.2024.0305)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
+    mini_portile2 (2.8.6)
     minitest (5.21.2)
     mongo (2.19.3)
       bson (>= 4.14.1, < 5.0.0)
@@ -188,15 +188,15 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
-    nokogiri (1.16.2)
+    nio4r (2.7.1)
+    nokogiri (1.16.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.16.2-aarch64-linux)
+    nokogiri (1.16.4-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     psych (5.1.2)
       stringio
@@ -204,7 +204,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.10)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (2.0.0)
@@ -221,10 +221,10 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rake (13.1.0)
-    rdoc (6.6.2)
+    rake (13.2.1)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    reline (0.4.3)
+    reline (0.5.4)
       io-console (~> 0.5)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
